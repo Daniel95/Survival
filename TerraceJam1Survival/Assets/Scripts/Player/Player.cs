@@ -1,21 +1,23 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController2D))]
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     #region Singleton
-    public static PlayerMovement GetInstance()
+    public static Player GetInstance()
     {
         if (instance == null)
         {
-            instance = FindObjectOfType<PlayerMovement>();
+            instance = FindObjectOfType<Player>();
         }
         return instance;
     }
 
-    private static PlayerMovement instance;
+    private static Player instance;
     #endregion
 
+    [SerializeField] [Tag] private string enemyCursorTag;
     [SerializeField] private float runSpeed = 40f;
 
     private CharacterController2D controller;
@@ -33,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
         {
             jump = true;
         }
+
+        //controller.Move(horizontalMove * Time.deltaTime, crouch, jump);
+        //jump = false;
 
         //if (Input.GetButtonDown("Crouch"))
         //{
