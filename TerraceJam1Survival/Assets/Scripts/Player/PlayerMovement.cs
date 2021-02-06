@@ -3,6 +3,19 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    #region Singleton
+    public static PlayerMovement GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = FindObjectOfType<PlayerMovement>();
+        }
+        return instance;
+    }
+
+    private static PlayerMovement instance;
+    #endregion
+
     [SerializeField] private float runSpeed = 40f;
 
     private CharacterController2D controller;
