@@ -1,21 +1,52 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Text))]
 public class Timer : MonoBehaviour
 {
-    private float timer;
-    private Text text;
+    public static int highScore;
+
+    [SerializeField] private Text currentScoreText;
+    [SerializeField] private Text highScoreText;
+
+    private string HIGH_SCORE_STRING = "High Score: ";
+    private string CURRENT_SCORE_STRING = "Current Score: ";
+
+    private float currentScore;
+    private bool introCompleted;
 
     private void Update()
     {
-        timer += Time.deltaTime;
+        if(!introCompleted) { return; }
 
-        text.text = ((short)timer).ToString();
+        currentScore += Time.deltaTime;
+
+        currentScoreText.text = CURRENT_SCORE_STRING + ((int)currentScore).ToString();
+
+        if(currentScore > highScore)
+        {
+            highScore = (int)currentScore;
+            highScoreText.text = HIGH_SCORE_STRING + ((int)highScore).ToString();
+        }
+    }
+
+    private void OnIntroComplete()
+    {
+        introCompleted = true;
     }
 
     private void Awake()
     {
-        text = GetComponent<Text>();
+        highScoreText.text = HIGH_SCORE_STRING + highScore;
+        currentScoreText.text = CURRENT_SCORE_STRING + ((int)currentScore).ToString();
+    }
+
+    private void OnEnable()
+    {
+        IntroManager.IntroCompleteEvent += OnIntroComplete;
+    }
+
+    private void OnDisable()
+    {
+        IntroManager.IntroCompleteEvent -= OnIntroComplete;
     }
 }
