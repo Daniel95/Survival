@@ -26,6 +26,8 @@ public class EnemyCursor : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = false;
+
         pickupPlayerState = GetComponent<PickupPlayerState>();
 
         states = new IEnemyCursorState[randomCursorStates.Length];
