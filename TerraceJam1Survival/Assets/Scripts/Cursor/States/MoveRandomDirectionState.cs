@@ -7,17 +7,17 @@ public class MoveRandomDirectionState : MonoBehaviour, IEnemyCursorState
 
     [SerializeField] private HelperValues.RandomSpeed randomSpeed;
     [SerializeField] private HelperValues.RandomTime randomTime;
+    [SerializeField] private float spawnRate;
 
     private float timer;
     private float speed;
+    private Vector3 randomDirection;
+
+    public float GetSpawnRate() => spawnRate;
 
     public void Act()
     {
-        Vector3 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
-
-        Vector3 directionToPlayer = (transform.position - Player.GetInstance().transform.position).normalized;
-
-        transform.Translate(directionToPlayer * Time.deltaTime * speed);
+        transform.Translate(randomDirection * Time.deltaTime * speed);
 
         timer -= Time.deltaTime;
         if (timer <= 0)
@@ -30,6 +30,7 @@ public class MoveRandomDirectionState : MonoBehaviour, IEnemyCursorState
     {
         Debug.Log("MoveRandomDirectionState");
 
+        randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
         timer = randomTime.randomTime;
         speed = randomSpeed.randomSpeed;
     }

@@ -7,9 +7,12 @@ public class MoveAwayFromPlayerState : MonoBehaviour, IEnemyCursorState
 
     [SerializeField] private HelperValues.RandomSpeed randomSpeed;
     [SerializeField] private HelperValues.RandomTime randomTime;
+    [SerializeField] private float spawnRate = 0.3f;
 
     private float timer;
     private float speed;
+
+    public float GetSpawnRate() => spawnRate;
 
     public void Act()
     {

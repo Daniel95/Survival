@@ -476,8 +476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomSpeed:
-    minSpeed: 1.94
-    maxSpeed: 3.65
+    minSpeed: 3.76
+    maxSpeed: 4.82
   randomTime:
     minTime: 1.6
     maxTime: 4.44
@@ -515,8 +515,8 @@ MonoBehaviour:
     minSpeed: 4.77
     maxSpeed: 5.89
   randomTime:
-    minTime: 0.42
-    maxTime: 1.87
+    minTime: 0.34
+    maxTime: 1.51
 --- !u!1 &1126911703
 GameObject:
   m_ObjectHideFlags: 0

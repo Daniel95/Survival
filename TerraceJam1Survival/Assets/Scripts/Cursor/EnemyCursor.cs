@@ -7,8 +7,10 @@ public class EnemyCursor : MonoBehaviour
     [SerializeField] [Tag] private string playerTag;
 
     private IEnemyCursorState[] states;
+    private float[] stateSpawnRegion;
     private IEnemyCursorState activeState;
     private int lastStateIndex;
+    private float totalSpawnRate;
 
     private void Update()
     {
@@ -21,6 +23,13 @@ public class EnemyCursor : MonoBehaviour
     private void Awake()
     {
         states = GetComponents<IEnemyCursorState>();
+        stateSpawnRegion = new float[states.Length];
+
+        for (int i = 0; i < stateSpawnRegion.Length; i++)
+        {
+            totalSpawnRate += states[i].GetSpawnRate();
+            stateSpawnRegion[i] = totalSpawnRate;
+        }
 
         StartRandomState();
     }
@@ -36,7 +45,17 @@ public class EnemyCursor : MonoBehaviour
 
         while (randomIndex == lastStateIndex)
         {
-            randomIndex = Random.Range(0, states.Length);
+            float randomValue = Random.Range(0.0f, totalSpawnRate);
+            
+            for (int i = 0; i < stateSpawnRegion.Length; i++)
+            {
+                if(stateSpawnRegion[i] >= randomValue)
+                {
+                    randomIndex = i;
+
+                    break;
+                }
+            }
         }
 
         lastStateIndex = randomIndex;
