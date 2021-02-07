@@ -17,6 +17,8 @@ public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
 
     public void Enter()
     {
+        Debug.Log("MoveRandomPointsState");
+
         speed = randomSpeed.randomSpeed;
     }
 }

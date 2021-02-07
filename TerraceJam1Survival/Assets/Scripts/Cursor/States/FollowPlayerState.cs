@@ -30,7 +30,5 @@ public class FollowPlayerState : MonoBehaviour, IEnemyCursorState
 
         timer = randomTime.randomTime;
         speed = randomSpeed.randomSpeed;
-
-        Debug.Log(timer);
     }
 }

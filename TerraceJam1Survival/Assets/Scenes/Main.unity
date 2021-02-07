@@ -328,6 +328,9 @@ GameObject:
   - component: {fileID: 990516039}
   - component: {fileID: 990516042}
   - component: {fileID: 990516043}
+  - component: {fileID: 990516045}
+  - component: {fileID: 990516044}
+  - component: {fileID: 990516047}
   m_Layer: 6
   m_Name: Cursor
   m_TagString: Untagged
@@ -347,20 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786984bb9e4c5a040b5c37953a304e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3
-  minSpeed: 5.5
   playerTag: Player
-  states:
-  - function: FollowPlayer
-    minStateSwitchTime: 3
-    maxStateSwitchTime: 7
-    minSpeed: 1
-    maxSpeed: 2
-  - function: MoveRandomDirection
-    minStateSwitchTime: 0.2
-    maxStateSwitchTime: 0.7
-    minSpeed: 2
-    maxSpeed: 3
 --- !u!212 &990516040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -473,6 +463,60 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &990516044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990516038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b5e6e918e44e14caeb2083289894be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomSpeed:
+    minSpeed: 1.94
+    maxSpeed: 3.65
+  randomTime:
+    minTime: 1.6
+    maxTime: 4.44
+--- !u!114 &990516045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990516038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e927856c3a3ead458a8c62e5eb78da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomSpeed:
+    minSpeed: 3.52
+    maxSpeed: 4.84
+  randomTime:
+    minTime: 0.14
+    maxTime: 1.6
+--- !u!114 &990516047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990516038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7707f6f842016eb4abfcb04124193a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomSpeed:
+    minSpeed: 4.77
+    maxSpeed: 5.89
+  randomTime:
+    minTime: 0.42
+    maxTime: 1.87
 --- !u!1 &1126911703
 GameObject:
   m_ObjectHideFlags: 0

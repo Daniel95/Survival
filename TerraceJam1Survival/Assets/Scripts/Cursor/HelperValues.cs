@@ -8,8 +8,8 @@ public class HelperValues
     {
         public float randomTime => UnityEngine.Random.Range(minTime, maxTime);
 
-        [SerializeField] [Range(0.1f, 5)] private float minTime;
-        [SerializeField] [Range(1.0f, 15)] private float maxTime;
+        [SerializeField] [Range(0.1f, 10)] private float minTime;
+        [SerializeField] [Range(1.0f, 10)] private float maxTime;
     }
 
     [Serializable]
@@ -17,7 +17,7 @@ public class HelperValues
     {
         public float randomSpeed => UnityEngine.Random.Range(minSpeed, maxSpeed);
 
-        [SerializeField] [Range(1, 5)] private float minSpeed;
-        [SerializeField] [Range(1, 5)] private float maxSpeed;
+        [SerializeField] [Range(1, 7)] private float minSpeed;
+        [SerializeField] [Range(1, 7)] private float maxSpeed;
     }
 }

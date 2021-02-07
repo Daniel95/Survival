@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class MoveRandomDirectionState : MonoBehaviour, IEnemyCursorState
+public class MoveAwayFromPlayerState : MonoBehaviour, IEnemyCursorState
 {
     public Action OnComplete { get; set; }
 
@@ -13,8 +13,6 @@ public class MoveRandomDirectionState : MonoBehaviour, IEnemyCursorState
 
     public void Act()
     {
-        Vector3 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
-
         Vector3 directionToPlayer = (transform.position - Player.GetInstance().transform.position).normalized;
 
         transform.Translate(directionToPlayer * Time.deltaTime * speed);
@@ -28,7 +26,7 @@ public class MoveRandomDirectionState : MonoBehaviour, IEnemyCursorState
 
     public void Enter()
     {
-        Debug.Log("MoveRandomDirectionState");
+        Debug.Log("MoveAwayFromPlayerState");
 
         timer = randomTime.randomTime;
         speed = randomSpeed.randomSpeed;
