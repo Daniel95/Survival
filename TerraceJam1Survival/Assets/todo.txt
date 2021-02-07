@@ -1,5 +1,9 @@
 Introduction 
 
+speed up cursor by being picked up
+
+
+
 Cursor movement:
 -Follow player
 -Intercept player

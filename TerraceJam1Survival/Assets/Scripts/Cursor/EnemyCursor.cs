@@ -1,13 +1,13 @@
 using NaughtyAttributes;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnemyCursor : MonoBehaviour
 {
+    public static float speedFactor = 1;
+
     [SerializeField] [Tag] private string playerTag;
     [SerializeField] private Component[] randomCursorStates;
+    [SerializeField] private float speedIncreaseFactorOnPickup = 0.3f;
 
     private IEnemyCursorState[] states;
     private float[] stateSpawnRegion;
@@ -77,6 +77,8 @@ public class EnemyCursor : MonoBehaviour
     private void StartPickupPlayerState()
     {
         StartState(pickupPlayerState);
+
+        speedFactor += speedIncreaseFactorOnPickup;
     }
 
     private void StartState(IEnemyCursorState enemyCursorState)
