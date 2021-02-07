@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickupRandomPlatformState : MonoBehaviour, IEnemyCursorState
 {
-    public Action OnComplete { get; set; }
+    public Action onComplete { get; set; }
 
     [SerializeField] [Tag] private string platformTag;
     [SerializeField] private CursorHelper.RandomSpeed randomSpeed;
@@ -45,7 +45,10 @@ public class PickupRandomPlatformState : MonoBehaviour, IEnemyCursorState
             {
                 pickedUp = false;
 
-                OnComplete();
+                if (onComplete != null)
+                {
+                    onComplete();
+                }
             });
         });
     }

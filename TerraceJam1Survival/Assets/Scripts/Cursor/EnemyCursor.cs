@@ -1,16 +1,20 @@
 using NaughtyAttributes;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnemyCursor : MonoBehaviour
 {
     [SerializeField] [Tag] private string playerTag;
+    [SerializeField] private Component[] randomCursorStates;
 
     private IEnemyCursorState[] states;
     private float[] stateSpawnRegion;
     private IEnemyCursorState activeState;
     private int lastStateIndex;
     private float totalSpawnRate;
+    private IEnemyCursorState pickupPlayerState;
 
     private void Update()
     {
@@ -22,7 +26,15 @@ public class EnemyCursor : MonoBehaviour
 
     private void Awake()
     {
-        states = GetComponents<IEnemyCursorState>();
+        pickupPlayerState = GetComponent<PickupPlayerState>();
+
+        states = new IEnemyCursorState[randomCursorStates.Length];
+
+        for (int i = 0; i < randomCursorStates.Length; i++)
+        {
+            states[i] = (IEnemyCursorState)randomCursorStates[i];
+        }
+
         stateSpawnRegion = new float[states.Length];
 
         for (int i = 0; i < stateSpawnRegion.Length; i++)
@@ -38,7 +50,7 @@ public class EnemyCursor : MonoBehaviour
     {
         if(activeState != null)
         {
-            activeState.OnComplete = null;
+            activeState.onComplete = null;
         }
 
         int randomIndex = lastStateIndex;
@@ -59,17 +71,31 @@ public class EnemyCursor : MonoBehaviour
         }
 
         lastStateIndex = randomIndex;
+        StartState(states[randomIndex]);
+    }
 
-        activeState = states[randomIndex];
-        activeState.OnComplete += StartRandomState;
+    private void StartPickupPlayerState()
+    {
+        StartState(pickupPlayerState);
+    }
+
+    private void StartState(IEnemyCursorState enemyCursorState)
+    {
+        if (activeState != null)
+        {
+            activeState.onComplete = null;
+        }
+
+        activeState = enemyCursorState;
+        activeState.onComplete += StartRandomState;
         activeState.Enter();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(playerTag))
+        if (collision.gameObject.CompareTag(playerTag) && activeState != pickupPlayerState)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartPickupPlayerState();
         }
     }
 }

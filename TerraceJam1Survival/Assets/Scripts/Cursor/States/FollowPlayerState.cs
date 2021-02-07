@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FollowPlayerState : MonoBehaviour, IEnemyCursorState
 {
-    public Action OnComplete { get; set; }
+    public Action onComplete { get; set; }
 
     [SerializeField] private CursorHelper.RandomSpeed randomSpeed;
     [SerializeField] private CursorHelper.RandomTime randomTime;
@@ -23,7 +23,10 @@ public class FollowPlayerState : MonoBehaviour, IEnemyCursorState
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            OnComplete();
+            if (onComplete != null)
+            {
+                onComplete();
+            }
         }
     }
 

@@ -2,7 +2,7 @@
 
 public interface IEnemyCursorState
 {
-    Action OnComplete { get; set; }
+    Action onComplete { get; set; }
 
     float GetSpawnRate();
     void Enter();

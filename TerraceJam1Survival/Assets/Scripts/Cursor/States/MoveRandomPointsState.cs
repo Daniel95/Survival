@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
 {
-    public Action OnComplete { get; set; }
+    public Action onComplete { get; set; }
 
     [SerializeField] private CursorHelper.RandomSpeed randomSpeed;
     [SerializeField] private CursorHelper.RandomCount randomCount;
@@ -20,7 +20,10 @@ public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
     {
         if(countRemaining <= 0)
         {
-            OnComplete();
+            if (onComplete != null)
+            {
+                onComplete();
+            }
 
             return;
         }
