@@ -44,6 +44,7 @@ public class PickupRandomPlatformState : MonoBehaviour, IEnemyCursorState
             transform.LeanMove(playerPosition, time).setEaseInOutBack().setOnComplete(() =>
             {
                 pickedUp = false;
+                targetTransform.GetComponent<Renderer>().material.SetColor("_Color", new Color(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f)));
 
                 if (onComplete != null)
                 {

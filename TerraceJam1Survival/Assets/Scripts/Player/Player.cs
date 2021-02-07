@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController2D))]
+[RequireComponent(typeof(PlayerStats))]
 public class Player : MonoBehaviour
 {
     #region Singleton
@@ -19,10 +20,10 @@ public class Player : MonoBehaviour
     #endregion
 
     [SerializeField] [Tag] private string enemyCursorTag;
-    [SerializeField] private float runSpeed = 40f;
     [SerializeField] private float yDeadZone = -10;
 
     private CharacterController2D controller;
+    private PlayerStats playerStats;
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
@@ -35,10 +36,11 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * playerStats.speed;
 
         if (Input.GetButtonDown("Jump"))
         {
+            controller.m_JumpForce = playerStats.jumpForce;
             jump = true;
         }
 
@@ -66,5 +68,6 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController2D>();
+        playerStats = GetComponent<PlayerStats>();
     }
 }

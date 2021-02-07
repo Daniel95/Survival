@@ -38,10 +38,13 @@ public class PickupPlayerState : MonoBehaviour, IEnemyCursorState
             transform.LeanMove(positionAroundPlayer, 3).setEaseInOutBack().setOnComplete(() =>
             {
                 pickedUp = false;
+                targetTransform.GetComponent<PlayerStats>().Randomize();
+                targetTransform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                pickupCount++;
 
-                transform.LeanMove(new Vector3(0, 0, 0), 3).setEaseInOutBack().setOnComplete(() =>
+                transform.LeanMove(Vector3.zero, 3).setEaseInOutBack().setOnComplete(() =>
                 {
-                    pickupCount++;
+
                     if (onComplete != null)
                     {
                         onComplete();
