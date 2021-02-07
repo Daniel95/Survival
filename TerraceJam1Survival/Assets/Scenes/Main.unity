@@ -1333,6 +1333,7 @@ GameObject:
   - component: {fileID: 990516041}
   - component: {fileID: 990516040}
   - component: {fileID: 990516039}
+  - component: {fileID: 990516053}
   - component: {fileID: 990516052}
   - component: {fileID: 990516045}
   - component: {fileID: 990516044}
@@ -1373,6 +1374,7 @@ MonoBehaviour:
   - {fileID: 990516049}
   - {fileID: 990516051}
   - {fileID: 990516052}
+  - {fileID: 990516053}
   speedIncreaseFactorOnPickup: 0.25
 --- !u!212 &990516040
 SpriteRenderer:
@@ -1651,6 +1653,23 @@ MonoBehaviour:
     minSpeed: 6.67
     maxSpeed: 9.24
   spawnRate: 1
+--- !u!114 &990516053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990516038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337fab10b661cc84c87462454ff45306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformTag: Platform
+  randomSpeed:
+    minSpeed: 5.97
+    maxSpeed: 12.01
+  spawnRate: 0.5
 --- !u!1 &1054377252
 GameObject:
   m_ObjectHideFlags: 0

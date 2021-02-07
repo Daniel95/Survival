@@ -1,24 +1,5 @@
 Introduction 
 
-speed up cursor by being picked up
+delete platform state
 
-
-
-Cursor movement:
--Follow player
--Intercept player
--fast movement intervals
--fast mouse with max turn speed
-
-Make editor with tweakable player stats
-
-Spawn/delete random objects in the level
-
-Smooth camera movement
-
-make background dark to contrast the cursor
-
-cursor click circle
-cursor can pick you up, first 2 times will give you random stats, third time delete you
-
-
+Move all platforms state
