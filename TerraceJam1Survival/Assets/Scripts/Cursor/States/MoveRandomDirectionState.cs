@@ -5,8 +5,8 @@ public class MoveRandomDirectionState : MonoBehaviour, IEnemyCursorState
 {
     public Action OnComplete { get; set; }
 
-    [SerializeField] private HelperValues.RandomSpeed randomSpeed;
-    [SerializeField] private HelperValues.RandomTime randomTime;
+    [SerializeField] private CursorHelper.RandomSpeed randomSpeed;
+    [SerializeField] private CursorHelper.RandomTime randomTime;
     [SerializeField] private float spawnRate;
 
     private float timer;

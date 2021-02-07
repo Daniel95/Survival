@@ -5,8 +5,8 @@ public class MoveRandomPointsElasticState : MonoBehaviour, IEnemyCursorState
 {
     public Action OnComplete { get; set; }
 
-    [SerializeField] private HelperValues.RandomSpeed randomTime;
-    [SerializeField] private HelperValues.RandomCount randomCount;
+    [SerializeField] private CursorHelper.RandomSpeed randomTime;
+    [SerializeField] private CursorHelper.RandomCount randomCount;
     [SerializeField] private float spawnRate = 0.3f;
     [SerializeField] private float maxDistanceFromPlayer = 5;
 

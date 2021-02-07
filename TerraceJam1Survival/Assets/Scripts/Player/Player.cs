@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController2D))]
 public class Player : MonoBehaviour
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] [Tag] private string enemyCursorTag;
     [SerializeField] private float runSpeed = 40f;
+    [SerializeField] private float yDeadZone = -10;
 
     private CharacterController2D controller;
     float horizontalMove = 0f;
@@ -28,6 +30,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y <= yDeadZone)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 

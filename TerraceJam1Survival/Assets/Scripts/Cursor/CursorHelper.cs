@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class HelperValues
+public class CursorHelper
 {
     [Serializable]
     public struct RandomTime
@@ -28,5 +28,14 @@ public class HelperValues
 
         [SerializeField] [Range(1, 7)] private int minCount;
         [SerializeField] [Range(1, 7)] private int maxCount;
+    }
+
+    public static Vector2 GetPositionAroundPlayer(float maxDistanceAroundPlayer = 5)
+    {
+        Vector2 playerPosition = Player.GetInstance().transform.position;
+
+        Vector2 randomPosition = playerPosition + UnityEngine.Random.insideUnitCircle * maxDistanceAroundPlayer;
+
+        return randomPosition;
     }
 }

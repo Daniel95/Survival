@@ -5,8 +5,8 @@ public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
 {
     public Action OnComplete { get; set; }
 
-    [SerializeField] private HelperValues.RandomSpeed randomSpeed;
-    [SerializeField] private HelperValues.RandomCount randomCount;
+    [SerializeField] private CursorHelper.RandomSpeed randomSpeed;
+    [SerializeField] private CursorHelper.RandomCount randomCount;
     [SerializeField] private float spawnRate = 0.3f;
     [SerializeField] private float maxDistanceFromPlayer = 5;
 
@@ -27,7 +27,7 @@ public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
 
         countRemaining--;
 
-        Vector2 playerPosition = GetTargetAroundPlayer();
+        Vector2 playerPosition = CursorHelper.GetPositionAroundPlayer(maxDistanceFromPlayer);
 
         float time = Vector2.Distance(transform.position, playerPosition) / randomSpeed.randomSpeed;
 
@@ -41,14 +41,5 @@ public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
         countRemaining = randomCount.randomCount;
 
         MoveToPointRecusive();
-    }
-
-    private Vector2 GetTargetAroundPlayer()
-    {
-        Vector2 playerPosition = Player.GetInstance().transform.position;
-
-        Vector2 randomPosition = playerPosition + UnityEngine.Random.insideUnitCircle * maxDistanceFromPlayer;
-
-        return randomPosition;
     }
 }
