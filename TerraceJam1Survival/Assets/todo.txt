@@ -1,0 +1,18 @@
+Introduction 
+
+Cursor movement:
+-Follow player
+-Intercept player
+-fast movement intervals
+-fast mouse with max turn speed
+
+Make editor with tweakable player stats
+
+Spawn/delete random objects in the level
+
+Smooth camera movement
+
+
+
+
+
