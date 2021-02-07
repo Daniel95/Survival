@@ -415,7 +415,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 1
+  m_SideArc: 0
 --- !u!1 &270609159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,8 +1217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomSpeed:
-    minSpeed: 8.2
-    maxSpeed: 10.63
+    minSpeed: 6.67
+    maxSpeed: 9.24
   spawnRate: 1
 --- !u!1 &1054377252
 GameObject:
@@ -1652,7 +1652,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 1
+  m_SideArc: 0
 --- !u!61 &1233585687
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1781,7 +1781,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 1
+  m_SideArc: 0
 --- !u!61 &1267695487
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1940,7 +1940,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 1
+  m_SideArc: 0
 --- !u!61 &1363933078
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2669,7 +2669,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 1
+  m_SideArc: 0
 --- !u!61 &1749717181
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2798,7 +2798,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 1
+  m_SideArc: 0
 --- !u!61 &1813861283
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2927,7 +2927,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 1
+  m_SideArc: 0
 --- !u!61 &1906308543
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3145,6 +3145,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4599901001398330414, guid: d0e8d04a22ff21c4da041da220508513, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599901001398330415, guid: d0e8d04a22ff21c4da041da220508513, type: 3}
+      propertyPath: m_SideArc
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
