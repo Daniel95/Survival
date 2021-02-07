@@ -44,8 +44,14 @@ public class EnemyCursor : MonoBehaviour
             totalSpawnRate += states[i].GetSpawnRate();
             stateSpawnRegion[i] = totalSpawnRate;
         }
+    }
 
-        StartRandomState();
+    private void OnIntroComplete()
+    {
+        transform.LeanMove(Vector2.zero, 3).setEaseInBack().setOnComplete(() => 
+        {
+            StartRandomState();
+        });
     }
 
     private void OnDestroy()
@@ -106,5 +112,15 @@ public class EnemyCursor : MonoBehaviour
         {
             StartPickupPlayerState();
         }
+    }
+
+    private void OnEnable()
+    {
+        IntroManager.IntroCompleteEvent += OnIntroComplete;
+    }
+
+    private void OnDisable()
+    {
+        IntroManager.IntroCompleteEvent -= OnIntroComplete;
     }
 }

@@ -18,7 +18,7 @@ public class SwipeAtPlayerState : MonoBehaviour, IEnemyCursorState
 
         float time = randomSpeed.GetTime(transform.position, Player.GetInstance().transform.position);
 
-        transform.LeanMove(Player.GetInstance().transform.position, time).setEaseInExpo().setOnComplete(() =>
+        transform.LeanMove(Player.GetInstance().transform.position, time).setEaseInBack().setOnComplete(() =>
         {
             if (onComplete != null)
             {

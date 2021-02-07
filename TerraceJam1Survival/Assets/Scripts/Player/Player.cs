@@ -26,10 +26,13 @@ public class Player : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
+    bool enableMovement;
 
     // Update is called once per frame
     void Update()
     {
+        if(!enableMovement) { return; }
+
         if(transform.position.y <= yDeadZone)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -61,6 +64,11 @@ public class Player : MonoBehaviour
 
     }
 
+    private void OnIntroComplete()
+    {
+        enableMovement = true;
+    }
+
     void FixedUpdate()
     {
         // Move our character
@@ -77,6 +85,16 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         instance = null;
+    }
+
+    private void OnEnable()
+    {
+        IntroManager.IntroCompleteEvent += OnIntroComplete;
+    }
+
+    private void OnDisable()
+    {
+        IntroManager.IntroCompleteEvent -= OnIntroComplete;
     }
 
     private IEnumerator JumpOff()
