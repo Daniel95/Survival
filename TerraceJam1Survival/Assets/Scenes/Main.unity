@@ -1608,7 +1608,7 @@ MonoBehaviour:
   - {fileID: 990516052}
   - {fileID: 990516053}
   - {fileID: 990516054}
-  speedIncreaseFactorOnPickup: 0.25
+  speedIncreaseFactorOnPickup: 0.2
 --- !u!212 &990516040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1849,9 +1849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomSpeed:
-    minSpeed: 4.64
-    maxSpeed: 6.25
-  maxDistanceFromPlayer: 15
+    minSpeed: 5.84
+    maxSpeed: 7.02
+  maxDistanceFromPlayer: 25
 --- !u!114 &990516051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1920,7 +1920,7 @@ MonoBehaviour:
     minSpeed: 11.18
     maxSpeed: 12.78
   spawnRate: 0.1
-  maxPlatformMoveDistance: 2
+  maxPlatformMoveDistance: 4
 --- !u!1 &1054377252
 GameObject:
   m_ObjectHideFlags: 0
