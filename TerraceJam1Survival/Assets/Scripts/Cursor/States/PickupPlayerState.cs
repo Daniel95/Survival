@@ -39,12 +39,14 @@ public class PickupPlayerState : MonoBehaviour, IEnemyCursorState
             {
                 pickedUp = false;
 
-                pickupCount++;
-
-                if(onComplete != null)
+                transform.LeanMove(new Vector3(0, 0, 0), 3).setEaseInOutBack().setOnComplete(() =>
                 {
-                    onComplete();
-                }
+                    pickupCount++;
+                    if (onComplete != null)
+                    {
+                        onComplete();
+                    }
+                });
             });
         });
     }
