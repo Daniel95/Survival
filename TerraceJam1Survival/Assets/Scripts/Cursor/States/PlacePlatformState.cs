@@ -13,9 +13,7 @@ public class PlacePlatformState : MonoBehaviour, IEnemyCursorState
 
     public float GetSpawnRate() => spawnRate;
 
-    public void Act()
-    {
-    }
+    public void Act() { }
 
     public void Enter()
     {

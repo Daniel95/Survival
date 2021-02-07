@@ -34,7 +34,7 @@ public class PickupRandomPlatformState : MonoBehaviour, IEnemyCursorState
 
         targetTransform = platforms[randomPlatformIndex].transform;
 
-        float time = Vector2.Distance(transform.position, targetTransform.transform.position) / randomSpeed.randomSpeed;
+        float time = randomSpeed.GetTime(transform.position, targetTransform.transform.position);
 
         transform.LeanMove(targetTransform.position, time).setEaseInOutBack().setOnComplete(() => 
         {

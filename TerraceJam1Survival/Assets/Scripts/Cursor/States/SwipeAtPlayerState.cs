@@ -1,12 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-public class MoveRandomDirectionState : MonoBehaviour, IEnemyCursorState
+public class SwipeAtPlayerState : MonoBehaviour, IEnemyCursorState
 {
     public Action onComplete { get; set; }
 
     [SerializeField] private CursorHelper.RandomSpeed randomSpeed;
-    [SerializeField] private CursorHelper.RandomTime randomTime;
     [SerializeField] private float spawnRate;
 
     public float GetSpawnRate() => spawnRate;
@@ -17,18 +16,14 @@ public class MoveRandomDirectionState : MonoBehaviour, IEnemyCursorState
     {
         //Debug.Log("MoveRandomDirectionState");
 
-        var randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
+        float time = randomSpeed.GetTime(transform.position, Player.GetInstance().transform.position);
 
-        Vector3 randomPosition = randomDirection * randomTime.randomTime;
-
-        float time = randomSpeed.GetTime(transform.position, randomPosition);
-        transform.LeanMove(randomPosition, time).setEaseInOutBack().setOnComplete(() =>
+        transform.LeanMove(Player.GetInstance().transform.position, time).setEaseInExpo().setOnComplete(() =>
         {
             if (onComplete != null)
             {
                 onComplete();
             }
         });
-
     }
 }
