@@ -36,10 +36,10 @@ public class PickupPlayerState : MonoBehaviour, IEnemyCursorState
             Vector2 positionAroundPlayer = CursorHelper.GetPositionAroundPlayer(maxDistanceFromPlayer * (pickupCount + 1));
             if(positionAroundPlayer.y < 0)
             {
-                positionAroundPlayer *= -1;
+                positionAroundPlayer.y *= -1;
             }
 
-            transform.LeanMove(positionAroundPlayer, 3).setEaseInOutBack().setOnComplete(() =>
+            transform.LeanMove((Vector2)targetTransform.position + positionAroundPlayer, 3).setEaseInOutBack().setOnComplete(() =>
             {
                 pickedUp = false;
                 targetTransform.GetComponent<PlayerStats>().Randomize();
