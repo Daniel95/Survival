@@ -29,7 +29,7 @@ public class MoveAwayFromPlayerState : MonoBehaviour, IEnemyCursorState
 
     public void Enter()
     {
-        Debug.Log("MoveAwayFromPlayerState");
+        //Debug.Log("MoveAwayFromPlayerState");
 
         timer = randomTime.randomTime;
         speed = randomSpeed.randomSpeed;

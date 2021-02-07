@@ -28,7 +28,7 @@ public class MoveRandomDirectionState : MonoBehaviour, IEnemyCursorState
 
     public void Enter()
     {
-        Debug.Log("MoveRandomDirectionState");
+        //Debug.Log("MoveRandomDirectionState");
 
         randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
         timer = randomTime.randomTime;

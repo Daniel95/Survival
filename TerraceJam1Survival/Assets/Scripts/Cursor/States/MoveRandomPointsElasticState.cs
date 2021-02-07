@@ -1,11 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
+public class MoveRandomPointsElasticState : MonoBehaviour, IEnemyCursorState
 {
     public Action OnComplete { get; set; }
 
-    [SerializeField] private HelperValues.RandomSpeed randomSpeed;
+    [SerializeField] private HelperValues.RandomSpeed randomTime;
     [SerializeField] private HelperValues.RandomCount randomCount;
     [SerializeField] private float spawnRate = 0.3f;
     [SerializeField] private float maxDistanceFromPlayer = 5;
@@ -18,7 +18,7 @@ public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
 
     private void MoveToPointRecusive()
     {
-        if(countRemaining <= 0)
+        if (countRemaining <= 0)
         {
             OnComplete();
 
@@ -29,14 +29,12 @@ public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
 
         Vector2 playerPosition = GetTargetAroundPlayer();
 
-        float time = Vector2.Distance(transform.position, playerPosition) / randomSpeed.randomSpeed;
-
-        transform.LeanMove(playerPosition, time).setEaseInOutBack().setOnComplete(MoveToPointRecusive);
+        transform.LeanMove(playerPosition, 1).setEaseInElastic().setOnComplete(MoveToPointRecusive);
     }
 
     public void Enter()
     {
-        //Debug.Log("MoveRandomPointsState");
+        //Debug.Log("MoveRandomPointsElasticState");
 
         countRemaining = randomCount.randomCount;
 

@@ -29,7 +29,7 @@ public class FollowPlayerState : MonoBehaviour, IEnemyCursorState
 
     public void Enter()
     {
-        Debug.Log("FollowPlayerState");
+        //Debug.Log("FollowPlayerState");
 
         timer = randomTime.randomTime;
         speed = randomSpeed.randomSpeed;
