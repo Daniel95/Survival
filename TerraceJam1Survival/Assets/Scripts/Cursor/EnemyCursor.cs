@@ -8,6 +8,7 @@ public class EnemyCursor : MonoBehaviour
 
     private IEnemyCursorState[] states;
     private IEnemyCursorState activeState;
+    private int lastStateIndex;
 
     private void Update()
     {
@@ -31,7 +32,15 @@ public class EnemyCursor : MonoBehaviour
             activeState.OnComplete = null;
         }
 
-        int randomIndex = UnityEngine.Random.Range(0, states.Length);
+        int randomIndex = lastStateIndex;
+
+        while (randomIndex == lastStateIndex)
+        {
+            randomIndex = Random.Range(0, states.Length);
+        }
+
+        lastStateIndex = randomIndex;
+
         activeState = states[randomIndex];
         activeState.OnComplete += StartRandomState;
         activeState.Enter();
