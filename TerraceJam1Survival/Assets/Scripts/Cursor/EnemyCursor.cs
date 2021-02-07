@@ -46,6 +46,11 @@ public class EnemyCursor : MonoBehaviour
         StartRandomState();
     }
 
+    private void OnDestroy()
+    {
+        speedFactor = 1;
+    }
+
     private void StartRandomState()
     {
         if(activeState != null)

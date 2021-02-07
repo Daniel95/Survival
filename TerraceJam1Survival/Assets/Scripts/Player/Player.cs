@@ -70,4 +70,9 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController2D>();
         playerStats = GetComponent<PlayerStats>();
     }
+
+    private void OnDestroy()
+    {
+        instance = null;
+    }
 }
