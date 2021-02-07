@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     #endregion
 
     [SerializeField] private float yDeadZone = -10;
+    [SerializeField] [Tag] private string platformTag;
 
     private CharacterController2D controller;
     private PlayerStats playerStats;
@@ -47,7 +49,7 @@ public class Player : MonoBehaviour
         } 
         else if (Input.GetKeyDown(KeyCode.S) && controller.m_Grounded && !controller.fallThrough)
         {
-            //StartCoroutine(JumpOff());
+            StartCoroutine(JumpOff());
         }
 
         //controller.Move(horizontalMove * Time.deltaTime, crouch, jump);
@@ -101,9 +103,23 @@ public class Player : MonoBehaviour
     {
         controller.fallThrough = true;
         controller.m_Grounded = false;
-        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Platform"), true);
-        yield return new WaitForSeconds(0.5f);
-        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Platform"), false);
+        //Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Platform"), true);
+
+        GameObject[] platforms = GameObject.FindGameObjectsWithTag(platformTag);
+
+        for (int i = 0; i < platforms.Length; i++)
+        {
+            platforms[i].GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+        yield return new WaitForSeconds(0.3f);
+
+        for (int i = 0; i < platforms.Length; i++)
+        {
+            platforms[i].GetComponent<BoxCollider2D>().enabled = true;
+        }
+
+        //Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Platform"), false);
         controller.fallThrough = false;
     }
 }
