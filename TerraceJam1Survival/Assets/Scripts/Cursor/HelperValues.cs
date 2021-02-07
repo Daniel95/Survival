@@ -17,7 +17,16 @@ public class HelperValues
     {
         public float randomSpeed => UnityEngine.Random.Range(minSpeed, maxSpeed);
 
-        [SerializeField] [Range(1, 7)] private float minSpeed;
-        [SerializeField] [Range(1, 7)] private float maxSpeed;
+        [SerializeField] [Range(1, 10)] private float minSpeed;
+        [SerializeField] [Range(1, 10)] private float maxSpeed;
+    }
+
+    [Serializable]
+    public struct RandomCount
+    {
+        public int randomCount => UnityEngine.Random.Range(minCount, maxCount);
+
+        [SerializeField] [Range(1, 7)] private int minCount;
+        [SerializeField] [Range(1, 7)] private int maxCount;
     }
 }
