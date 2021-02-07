@@ -28,12 +28,16 @@ public class PickupPlayerState : MonoBehaviour, IEnemyCursorState
 
         targetTransform = Player.GetInstance().transform;
 
-        float time = Vector2.Distance(transform.position, targetTransform.transform.position) / randomSpeed.randomSpeed;
+        float time = randomSpeed.GetTime(transform.position, targetTransform.transform.position);
 
         transform.LeanMove(targetTransform.position, time).setEaseInOutBack().setOnComplete(() =>
         {
             pickedUp = true;
             Vector2 positionAroundPlayer = CursorHelper.GetPositionAroundPlayer(maxDistanceFromPlayer * (pickupCount + 1));
+            if(positionAroundPlayer.y < 0)
+            {
+                positionAroundPlayer *= -1;
+            }
 
             transform.LeanMove(positionAroundPlayer, 3).setEaseInOutBack().setOnComplete(() =>
             {
@@ -44,7 +48,6 @@ public class PickupPlayerState : MonoBehaviour, IEnemyCursorState
 
                 transform.LeanMove(Vector3.zero, 3).setEaseInOutBack().setOnComplete(() =>
                 {
-
                     if (onComplete != null)
                     {
                         onComplete();

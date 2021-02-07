@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     private static Player instance;
     #endregion
 
-    [SerializeField] [Tag] private string enemyCursorTag;
     [SerializeField] private float yDeadZone = -10;
 
     private CharacterController2D controller;
@@ -42,6 +41,10 @@ public class Player : MonoBehaviour
         {
             controller.m_JumpForce = playerStats.jumpForce;
             jump = true;
+        } 
+        else if (Input.GetKeyDown(KeyCode.S) && controller.m_Grounded && !controller.fallThrough)
+        {
+            //StartCoroutine(JumpOff());
         }
 
         //controller.Move(horizontalMove * Time.deltaTime, crouch, jump);
@@ -74,5 +77,15 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         instance = null;
+    }
+
+    private IEnumerator JumpOff()
+    {
+        controller.fallThrough = true;
+        controller.m_Grounded = false;
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Platform"), true);
+        yield return new WaitForSeconds(0.5f);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Platform"), false);
+        controller.fallThrough = false;
     }
 }

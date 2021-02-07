@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 106099874}
   - component: {fileID: 106099873}
   - component: {fileID: 106099876}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (1)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -908,8 +908,8 @@ GameObject:
   - component: {fileID: 990516048}
   - component: {fileID: 990516046}
   - component: {fileID: 990516049}
-  - component: {fileID: 990516050}
   - component: {fileID: 990516051}
+  - component: {fileID: 990516050}
   - component: {fileID: 990516042}
   - component: {fileID: 990516043}
   m_Layer: 6
@@ -940,7 +940,7 @@ MonoBehaviour:
   - {fileID: 990516046}
   - {fileID: 990516049}
   - {fileID: 990516051}
-  speedIncreaseFactorOnPickup: 0.5
+  speedIncreaseFactorOnPickup: 0.25
 --- !u!212 &990516040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1066,8 +1066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomSpeed:
-    minSpeed: 3.61
-    maxSpeed: 9.13
+    minSpeed: 4.17
+    maxSpeed: 6.74
   randomTime:
     minTime: 1.6
     maxTime: 4.44
@@ -1104,11 +1104,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomSpeed:
-    minSpeed: 1.73
-    maxSpeed: 7.39
+    minSpeed: 5.42
+    maxSpeed: 10.7
   randomCount:
     minCount: 1
-    maxCount: 3
+    maxCount: 4
   spawnRate: 1
   maxDistanceFromPlayer: 5
 --- !u!114 &990516047
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomSpeed:
     minSpeed: 4.77
-    maxSpeed: 5.89
+    maxSpeed: 8.47
   randomTime:
     minTime: 0.34
     maxTime: 1.51
@@ -1142,14 +1142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1783b2890c42b45810f5ba6f94fa11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomTime:
-    minSpeed: 1
-    maxSpeed: 1.29
+  randomSpeed:
+    minSpeed: 6.81
+    maxSpeed: 12.36
   randomCount:
-    minCount: 3
-    maxCount: 4
+    minCount: 2
+    maxCount: 5
   spawnRate: 1
-  maxDistanceFromPlayer: 5
+  maxDistanceFromPlayer: 3
 --- !u!114 &990516049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,7 +1595,7 @@ GameObject:
   - component: {fileID: 1233585688}
   - component: {fileID: 1233585687}
   - component: {fileID: 1233585686}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (8)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -1724,7 +1724,7 @@ GameObject:
   - component: {fileID: 1267695488}
   - component: {fileID: 1267695487}
   - component: {fileID: 1267695486}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (9)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -1739,7 +1739,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267695484}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.33, y: -3.19, z: 3.363369}
+  m_LocalPosition: {x: -5.33, y: -2.07, z: 3.363369}
   m_LocalScale: {x: 13.024712, y: 0.7491642, z: 1}
   m_Children: []
   m_Father: {fileID: 419686780}
@@ -1883,7 +1883,7 @@ GameObject:
   - component: {fileID: 1363933079}
   - component: {fileID: 1363933078}
   - component: {fileID: 1363933077}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (7)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2189,10 +2189,12 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
   m_GroundCheck: {fileID: 314753253}
   m_CeilingCheck: {fileID: 1288643090}
   m_CrouchDisableCollider: {fileID: 0}
+  fallThrough: 0
+  m_Grounded: 0
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2315,7 +2317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ddc95406f957744ba608af3f06cfd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCursorTag: Player
   yDeadZone: -10
 --- !u!114 &1482852794
 MonoBehaviour:
@@ -2611,7 +2612,7 @@ GameObject:
   - component: {fileID: 1749717182}
   - component: {fileID: 1749717181}
   - component: {fileID: 1749717180}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (4)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2833,7 +2834,7 @@ GameObject:
   - component: {fileID: 1813861284}
   - component: {fileID: 1813861283}
   - component: {fileID: 1813861282}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (3)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2962,7 +2963,7 @@ GameObject:
   - component: {fileID: 1906308544}
   - component: {fileID: 1906308543}
   - component: {fileID: 1906308542}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (6)
   m_TagString: Platform
   m_Icon: {fileID: 0}

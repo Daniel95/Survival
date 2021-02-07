@@ -32,7 +32,7 @@ public class MoveRandomPointsState : MonoBehaviour, IEnemyCursorState
 
         Vector2 playerPosition = CursorHelper.GetPositionAroundPlayer(maxDistanceFromPlayer);
 
-        float time = Vector2.Distance(transform.position, playerPosition) / randomSpeed.randomSpeed;
+        float time = randomSpeed.GetTime(transform.position, playerPosition);
 
         transform.LeanMove(playerPosition, time).setEaseInOutBack().setOnComplete(MoveToPointRecusive);
     }

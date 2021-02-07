@@ -9,32 +9,40 @@ public class MoveAwayFromPlayerState : MonoBehaviour, IEnemyCursorState
     [SerializeField] private CursorHelper.RandomTime randomTime;
     [SerializeField] private float spawnRate = 0.3f;
 
-    private float timer;
-    private float speed;
-
     public float GetSpawnRate() => spawnRate;
 
     public void Act()
     {
-        Vector3 directionToPlayer = (transform.position - Player.GetInstance().transform.position).normalized;
+        //transform.Translate(directionFromPlayer * Time.deltaTime * speed);
 
-        transform.Translate(directionToPlayer * Time.deltaTime * speed);
-
-        timer -= Time.deltaTime;
-        if (timer <= 0)
-        {
-            if (onComplete != null)
-            {
-                onComplete();
-            }
-        }
+        //timer -= Time.deltaTime;
+        //if (timer <= 0)
+        //{
+        //    if (onComplete != null)
+        //    {
+        //        onComplete();
+        //    }
+        //}
     }
 
     public void Enter()
     {
         //Debug.Log("MoveAwayFromPlayerState");
 
-        timer = randomTime.randomTime;
-        speed = randomSpeed.randomSpeed;
+        var timer = randomTime.randomTime;
+        var speed = randomSpeed.randomSpeed;
+
+        Vector3 directionFromPlayer = (transform.position - Player.GetInstance().transform.position).normalized;
+
+        Vector3 randomPosition = directionFromPlayer * randomTime.randomTime;
+
+        float time = randomSpeed.GetTime(transform.position, randomPosition);
+        transform.LeanMove(randomPosition, time).setEaseInOutBack().setOnComplete(() =>
+        {
+            if (onComplete != null)
+            {
+                onComplete();
+            }
+        });
     }
 }

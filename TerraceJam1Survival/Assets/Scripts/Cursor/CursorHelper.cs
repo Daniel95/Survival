@@ -18,6 +18,15 @@ public class CursorHelper
         public float randomSpeed => UnityEngine.Random.Range(minSpeed, maxSpeed) * EnemyCursor.speedFactor;
         public float GetTime(Vector3 from, Vector3 to) => Vector2.Distance(from, to) / randomSpeed;
 
+        [SerializeField] [Range(1, 15)] private float minSpeed;
+        [SerializeField] [Range(1, 15)] private float maxSpeed;
+    }
+
+    [Serializable]
+    public struct RandomDistance
+    {
+        public float randomDistance => UnityEngine.Random.Range(minSpeed, maxSpeed) * EnemyCursor.speedFactor;
+
         [SerializeField] [Range(1, 10)] private float minSpeed;
         [SerializeField] [Range(1, 10)] private float maxSpeed;
     }
